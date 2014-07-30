@@ -2,8 +2,7 @@
 Usage: ./iosched –s<schedalgo> <inputfile>
 --	read in file
 --	add and issue the first task
-
-
+--	now all processes are correct for method i
 
 */
 
@@ -26,9 +25,9 @@ Usage: ./iosched –s<schedalgo> <inputfile>
 
 
 using namespace std;
-int c, n1, n2;
+int c, n1, n2, D_flag=0;
 string sche, line;
-int TIME=1, curTrack=0, issueCount=0, addCount=0;
+int TIME=1, curTrack=0, issueCount=0, addCount=0, IsueTime=0;
 
 vector<int> tasks_tmp;
 
@@ -47,7 +46,7 @@ public:
 class FIFO : public Scheduler{
 public:
 	int select(vector<Job>* tasks, deque<Job>& Run_dq){
-		return 0;
+		if(!Run_dq.empty())return 0; return -1;
 	}
 
 };
@@ -56,40 +55,68 @@ class IOsche{
 public:
 	vector < Job >* tasks;
 	deque<Job> Run_dq;
+	deque<Job> Finish_dq;
 	Scheduler* scheduler;	
-	int issuedT;
+	int issuedT, run_idx;
+	Job currentJob;
 	
 	void print(){
-		cout<<"tasks"<<endl;
-		for(int i=0; i<tasks->size(); i++){cout<<tasks->at(i).t<<" "<<tasks->at(i).track<<endl;}
+		// cout<<"tasks"<<endl;
+		// for(int i=0; i<tasks->size(); i++){cout<<tasks->at(i).t<<" "<<tasks->at(i).track<<endl;}
 		cout<<"run"<<endl;
 		for(int i=0; i<Run_dq.size(); i++){cout<<Run_dq[i].t<<" "<<Run_dq[i].track<<endl;}
-		cout<<"TIME:"<<TIME<<" curTrack:"<<curTrack<<endl;
+		cout<<"TIME:"<<TIME<<" curTrack:"<<curTrack<<" currentJob:"<<currentJob.t<<" "<<currentJob.track<<endl;
 		// cout<<scheduler->select(tasks, Run_dq)<<endl;
 	}
 	void add(vector<Job>* tasks, deque<Job> &Run_dq){
-		printf("%d: %5d add %3d\n",tasks->front().t,addCount, tasks->front().track); addCount++;
+		if(Run_dq.empty())TIME=tasks->front().t;
+		printf("%d: %5d add %d\n",tasks->front().t, addCount, tasks->front().track); addCount++;
 		Run_dq.push_back(tasks->front()); tasks->erase(tasks->begin());
+		if(D_flag==1)print();
 	}
 	
 	void issue(vector<Job>* tasks, deque<Job> &Run_dq){
-		int run_idx=scheduler->select(tasks, Run_dq);
-		printf("%d: %5d issue %3d %d\n",TIME, run_idx,Run_dq[run_idx].track, curTrack);	
-		TIME=TIME+Run_dq[run_idx].track; curTrack=Run_dq[run_idx].track;
+		run_idx=scheduler->select(tasks, Run_dq);
+		printf("%d: %5d issue %d %d\n",TIME, issueCount, Run_dq[run_idx].track, curTrack); issueCount++;
+		TIME=TIME+abs(curTrack-Run_dq[run_idx].track); curTrack=Run_dq[run_idx].track;
+		currentJob=Run_dq[run_idx];
+		if(D_flag==1)print();
 
+	}
+	void finish(vector<Job>* tasks, deque<Job> &Run_dq){
+		printf("%d: %5d finish %d\n",TIME, issueCount-1, TIME-Run_dq[run_idx].t);	
+		Finish_dq.push_back(Run_dq[run_idx]);
+		Run_dq.erase(Run_dq.begin()+run_idx);
+		if(D_flag==1)print();
 	}
 
 	void change(){
-		while(tasks->size()!=0 | Run_dq.size()!=0){
-			if(Run_dq.size()==0){
+		while (tasks->size()!=0 | Run_dq.size()!=0){			
+			while(tasks->size()!=0 && tasks->front().t<=TIME){			
 				add(tasks, Run_dq);
+			}		
+			if (addCount>1 ){
+				finish(tasks, Run_dq);			
 			}
-			else if(tasks->at(0).t<Run_dq.front().t){
-				add(tasks, Run_dq);	
-			}
-			issue(tasks, Run_dq);
-			print();
+			if(!Run_dq.empty()) issue(tasks, Run_dq);
+			else if (Run_dq.empty()&& !tasks->empty()){add(tasks, Run_dq);issue(tasks, Run_dq);}
+			// print();
+			
+
 		}
+		
+
+
+		// while(tasks->size()!=0 | Run_dq.size()!=0){
+		// 	if(Run_dq.size()==0){
+		// 		add(tasks, Run_dq);
+		// 	}
+		// 	else if(tasks->at(0).t<TIME){
+		// 		add(tasks, Run_dq);	
+		// 	}
+		// 	issue(tasks, Run_dq);
+		// 	print();
+		// }
 		
 	}
 	
@@ -99,10 +126,13 @@ public:
 
 int main(int argc, char *argv[]){
 	IOsche IO;
-	while((c=getopt(argc,argv,"s:")) !=-1){
+	while((c=getopt(argc,argv,"s:D")) !=-1){
 		switch (c){
 			case 's':
 				sche.assign(optarg);
+				break;
+			case 'D':
+				D_flag=1;
 				break;
 			default:
 				abort();

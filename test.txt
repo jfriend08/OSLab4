@@ -1,0 +1,1209 @@
+sche:i
+1:     0 add 107
+run
+1 107
+TIME:1 curTrack:0 currentJob:0 0
+1:     0 issue 107 0
+run
+1 107
+TIME:108 curTrack:107 currentJob:1 107
+22:     1 add 100
+run
+1 107
+22 100
+TIME:108 curTrack:107 currentJob:1 107
+70:     2 add 116
+run
+1 107
+22 100
+70 116
+TIME:108 curTrack:107 currentJob:1 107
+80:     3 add 42
+run
+1 107
+22 100
+70 116
+80 42
+TIME:108 curTrack:107 currentJob:1 107
+108:     0 finish 107
+run
+22 100
+70 116
+80 42
+TIME:108 curTrack:107 currentJob:1 107
+108:     1 issue 100 107
+run
+22 100
+70 116
+80 42
+TIME:115 curTrack:100 currentJob:22 100
+115:     1 finish 93
+run
+70 116
+80 42
+TIME:115 curTrack:100 currentJob:22 100
+115:     2 issue 116 100
+run
+70 116
+80 42
+TIME:131 curTrack:116 currentJob:70 116
+126:     4 add 35
+run
+70 116
+80 42
+126 35
+TIME:131 curTrack:116 currentJob:70 116
+131:     2 finish 61
+run
+80 42
+126 35
+TIME:131 curTrack:116 currentJob:70 116
+131:     3 issue 42 116
+run
+80 42
+126 35
+TIME:205 curTrack:42 currentJob:80 42
+157:     5 add 61
+run
+80 42
+126 35
+157 61
+TIME:205 curTrack:42 currentJob:80 42
+193:     6 add 46
+run
+80 42
+126 35
+157 61
+193 46
+TIME:205 curTrack:42 currentJob:80 42
+205:     3 finish 125
+run
+126 35
+157 61
+193 46
+TIME:205 curTrack:42 currentJob:80 42
+205:     4 issue 35 42
+run
+126 35
+157 61
+193 46
+TIME:212 curTrack:35 currentJob:126 35
+212:     4 finish 86
+run
+157 61
+193 46
+TIME:212 curTrack:35 currentJob:126 35
+212:     5 issue 61 35
+run
+157 61
+193 46
+TIME:238 curTrack:61 currentJob:157 61
+221:     7 add 121
+run
+157 61
+193 46
+221 121
+TIME:238 curTrack:61 currentJob:157 61
+238:     5 finish 81
+run
+193 46
+221 121
+TIME:238 curTrack:61 currentJob:157 61
+238:     6 issue 46 61
+run
+193 46
+221 121
+TIME:253 curTrack:46 currentJob:193 46
+253:     6 finish 60
+run
+221 121
+TIME:253 curTrack:46 currentJob:193 46
+253:     7 issue 121 46
+run
+221 121
+TIME:328 curTrack:121 currentJob:221 121
+278:     8 add 81
+run
+221 121
+278 81
+TIME:328 curTrack:121 currentJob:221 121
+320:     9 add 18
+run
+221 121
+278 81
+320 18
+TIME:328 curTrack:121 currentJob:221 121
+328:     7 finish 107
+run
+278 81
+320 18
+TIME:328 curTrack:121 currentJob:221 121
+328:     8 issue 81 121
+run
+278 81
+320 18
+TIME:368 curTrack:81 currentJob:278 81
+354:    10 add 2
+run
+278 81
+320 18
+354 2
+TIME:368 curTrack:81 currentJob:278 81
+366:    11 add 17
+run
+278 81
+320 18
+354 2
+366 17
+TIME:368 curTrack:81 currentJob:278 81
+368:     8 finish 90
+run
+320 18
+354 2
+366 17
+TIME:368 curTrack:81 currentJob:278 81
+368:     9 issue 18 81
+run
+320 18
+354 2
+366 17
+TIME:431 curTrack:18 currentJob:320 18
+414:    12 add 20
+run
+320 18
+354 2
+366 17
+414 20
+TIME:431 curTrack:18 currentJob:320 18
+431:     9 finish 111
+run
+354 2
+366 17
+414 20
+TIME:431 curTrack:18 currentJob:320 18
+431:    10 issue 2 18
+run
+354 2
+366 17
+414 20
+TIME:447 curTrack:2 currentJob:354 2
+435:    13 add 16
+run
+354 2
+366 17
+414 20
+435 16
+TIME:447 curTrack:2 currentJob:354 2
+440:    14 add 127
+run
+354 2
+366 17
+414 20
+435 16
+440 127
+TIME:447 curTrack:2 currentJob:354 2
+447:    10 finish 93
+run
+366 17
+414 20
+435 16
+440 127
+TIME:447 curTrack:2 currentJob:354 2
+447:    11 issue 17 2
+run
+366 17
+414 20
+435 16
+440 127
+TIME:462 curTrack:17 currentJob:366 17
+451:    15 add 65
+run
+366 17
+414 20
+435 16
+440 127
+451 65
+TIME:462 curTrack:17 currentJob:366 17
+462:    11 finish 96
+run
+414 20
+435 16
+440 127
+451 65
+TIME:462 curTrack:17 currentJob:366 17
+462:    12 issue 20 17
+run
+414 20
+435 16
+440 127
+451 65
+TIME:465 curTrack:20 currentJob:414 20
+465:    12 finish 51
+run
+435 16
+440 127
+451 65
+TIME:465 curTrack:20 currentJob:414 20
+465:    13 issue 16 20
+run
+435 16
+440 127
+451 65
+TIME:469 curTrack:16 currentJob:435 16
+469:    13 finish 34
+run
+440 127
+451 65
+TIME:469 curTrack:16 currentJob:435 16
+469:    14 issue 127 16
+run
+440 127
+451 65
+TIME:580 curTrack:127 currentJob:440 127
+502:    16 add 78
+run
+440 127
+451 65
+502 78
+TIME:580 curTrack:127 currentJob:440 127
+517:    17 add 81
+run
+440 127
+451 65
+502 78
+517 81
+TIME:580 curTrack:127 currentJob:440 127
+546:    18 add 63
+run
+440 127
+451 65
+502 78
+517 81
+546 63
+TIME:580 curTrack:127 currentJob:440 127
+580:    14 finish 140
+run
+451 65
+502 78
+517 81
+546 63
+TIME:580 curTrack:127 currentJob:440 127
+580:    15 issue 65 127
+run
+451 65
+502 78
+517 81
+546 63
+TIME:642 curTrack:65 currentJob:451 65
+607:    19 add 37
+run
+451 65
+502 78
+517 81
+546 63
+607 37
+TIME:642 curTrack:65 currentJob:451 65
+642:    15 finish 191
+run
+502 78
+517 81
+546 63
+607 37
+TIME:642 curTrack:65 currentJob:451 65
+642:    16 issue 78 65
+run
+502 78
+517 81
+546 63
+607 37
+TIME:655 curTrack:78 currentJob:502 78
+653:    20 add 67
+run
+502 78
+517 81
+546 63
+607 37
+653 67
+TIME:655 curTrack:78 currentJob:502 78
+655:    16 finish 153
+run
+517 81
+546 63
+607 37
+653 67
+TIME:655 curTrack:78 currentJob:502 78
+655:    17 issue 81 78
+run
+517 81
+546 63
+607 37
+653 67
+TIME:658 curTrack:81 currentJob:517 81
+658:    17 finish 141
+run
+546 63
+607 37
+653 67
+TIME:658 curTrack:81 currentJob:517 81
+658:    18 issue 63 81
+run
+546 63
+607 37
+653 67
+TIME:676 curTrack:63 currentJob:546 63
+676:    18 finish 130
+run
+607 37
+653 67
+TIME:676 curTrack:63 currentJob:546 63
+676:    19 issue 37 63
+run
+607 37
+653 67
+TIME:702 curTrack:37 currentJob:607 37
+699:    21 add 51
+run
+607 37
+653 67
+699 51
+TIME:702 curTrack:37 currentJob:607 37
+702:    19 finish 95
+run
+653 67
+699 51
+TIME:702 curTrack:37 currentJob:607 37
+702:    20 issue 67 37
+run
+653 67
+699 51
+TIME:732 curTrack:67 currentJob:653 67
+732:    20 finish 79
+run
+699 51
+TIME:732 curTrack:67 currentJob:653 67
+732:    21 issue 51 67
+run
+699 51
+TIME:748 curTrack:51 currentJob:699 51
+748:    21 finish 49
+run
+TIME:748 curTrack:51 currentJob:699 51
+754:    22 add 36
+run
+754 36
+TIME:754 curTrack:51 currentJob:699 51
+754:    22 issue 36 51
+run
+754 36
+TIME:769 curTrack:36 currentJob:754 36
+769:    22 finish 15
+run
+TIME:769 curTrack:36 currentJob:754 36
+q
+run
+773 103
+TIME:773 curTrack:36 currentJob:754 36
+773:    23 issue 103 36
+run
+773 103
+TIME:840 curTrack:103 currentJob:773 103
+830:    24 add 8
+run
+773 103
+830 8
+TIME:840 curTrack:103 currentJob:773 103
+840:    23 finish 67
+run
+830 8
+TIME:840 curTrack:103 currentJob:773 103
+840:    24 issue 8 103
+run
+830 8
+TIME:935 curTrack:8 currentJob:830 8
+889:    25 add 67
+run
+830 8
+889 67
+TIME:935 curTrack:8 currentJob:830 8
+893:    26 add 24
+run
+830 8
+889 67
+893 24
+TIME:935 curTrack:8 currentJob:830 8
+931:    27 add 113
+run
+830 8
+889 67
+893 24
+931 113
+TIME:935 curTrack:8 currentJob:830 8
+935:    24 finish 105
+run
+889 67
+893 24
+931 113
+TIME:935 curTrack:8 currentJob:830 8
+935:    25 issue 67 8
+run
+889 67
+893 24
+931 113
+TIME:994 curTrack:67 currentJob:889 67
+949:    28 add 8
+run
+889 67
+893 24
+931 113
+949 8
+TIME:994 curTrack:67 currentJob:889 67
+950:    29 add 58
+run
+889 67
+893 24
+931 113
+949 8
+950 58
+TIME:994 curTrack:67 currentJob:889 67
+953:    30 add 30
+run
+889 67
+893 24
+931 113
+949 8
+950 58
+953 30
+TIME:994 curTrack:67 currentJob:889 67
+994:    25 finish 105
+run
+893 24
+931 113
+949 8
+950 58
+953 30
+TIME:994 curTrack:67 currentJob:889 67
+994:    26 issue 24 67
+run
+893 24
+931 113
+949 8
+950 58
+953 30
+TIME:1037 curTrack:24 currentJob:893 24
+1014:    31 add 115
+run
+893 24
+931 113
+949 8
+950 58
+953 30
+1014 115
+TIME:1037 curTrack:24 currentJob:893 24
+1037:    26 finish 144
+run
+931 113
+949 8
+950 58
+953 30
+1014 115
+TIME:1037 curTrack:24 currentJob:893 24
+1037:    27 issue 113 24
+run
+931 113
+949 8
+950 58
+953 30
+1014 115
+TIME:1126 curTrack:113 currentJob:931 113
+1066:    32 add 34
+run
+931 113
+949 8
+950 58
+953 30
+1014 115
+1066 34
+TIME:1126 curTrack:113 currentJob:931 113
+1096:    33 add 48
+run
+931 113
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+TIME:1126 curTrack:113 currentJob:931 113
+1126:    27 finish 195
+run
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+TIME:1126 curTrack:113 currentJob:931 113
+1126:    28 issue 8 113
+run
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+TIME:1231 curTrack:8 currentJob:949 8
+1141:    34 add 65
+run
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+TIME:1231 curTrack:8 currentJob:949 8
+1180:    35 add 68
+run
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+TIME:1231 curTrack:8 currentJob:949 8
+1181:    36 add 56
+run
+949 8
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+TIME:1231 curTrack:8 currentJob:949 8
+1231:    28 finish 282
+run
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+TIME:1231 curTrack:8 currentJob:949 8
+1231:    29 issue 58 8
+run
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+TIME:1281 curTrack:58 currentJob:950 58
+1239:    37 add 119
+run
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+TIME:1281 curTrack:58 currentJob:950 58
+1281:    38 add 36
+run
+950 58
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+TIME:1281 curTrack:58 currentJob:950 58
+1281:    29 finish 331
+run
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+TIME:1281 curTrack:58 currentJob:950 58
+1281:    30 issue 30 58
+run
+953 30
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+TIME:1309 curTrack:30 currentJob:953 30
+1309:    30 finish 356
+run
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+TIME:1309 curTrack:30 currentJob:953 30
+1309:    31 issue 115 30
+run
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+TIME:1394 curTrack:115 currentJob:1014 115
+1324:    39 add 81
+run
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+TIME:1394 curTrack:115 currentJob:1014 115
+1343:    40 add 88
+run
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+TIME:1394 curTrack:115 currentJob:1014 115
+1351:    41 add 56
+run
+1014 115
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+TIME:1394 curTrack:115 currentJob:1014 115
+1394:    31 finish 380
+run
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+TIME:1394 curTrack:115 currentJob:1014 115
+1394:    32 issue 34 115
+run
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+TIME:1475 curTrack:34 currentJob:1066 34
+1405:    42 add 106
+run
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+TIME:1475 curTrack:34 currentJob:1066 34
+1422:    43 add 29
+run
+1066 34
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+TIME:1475 curTrack:34 currentJob:1066 34
+1475:    32 finish 409
+run
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+TIME:1475 curTrack:34 currentJob:1066 34
+1475:    33 issue 48 34
+run
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+TIME:1489 curTrack:48 currentJob:1096 48
+1477:    44 add 44
+run
+1096 48
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1489 curTrack:48 currentJob:1096 48
+1489:    33 finish 393
+run
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1489 curTrack:48 currentJob:1096 48
+1489:    34 issue 65 48
+run
+1141 65
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1506 curTrack:65 currentJob:1141 65
+1506:    34 finish 365
+run
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1506 curTrack:65 currentJob:1141 65
+1506:    35 issue 68 65
+run
+1180 68
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1509 curTrack:68 currentJob:1180 68
+1509:    35 finish 329
+run
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1509 curTrack:68 currentJob:1180 68
+1509:    36 issue 56 68
+run
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+TIME:1521 curTrack:56 currentJob:1181 56
+1517:    45 add 122
+run
+1181 56
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+TIME:1521 curTrack:56 currentJob:1181 56
+1521:    36 finish 340
+run
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+TIME:1521 curTrack:56 currentJob:1181 56
+1521:    37 issue 119 56
+run
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+TIME:1584 curTrack:119 currentJob:1239 119
+1550:    46 add 84
+run
+1239 119
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+TIME:1584 curTrack:119 currentJob:1239 119
+1584:    37 finish 345
+run
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+TIME:1584 curTrack:119 currentJob:1239 119
+1584:    38 issue 36 119
+run
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+TIME:1667 curTrack:36 currentJob:1281 36
+1602:    47 add 56
+run
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+TIME:1667 curTrack:36 currentJob:1281 36
+1659:    48 add 50
+run
+1281 36
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+TIME:1667 curTrack:36 currentJob:1281 36
+1667:    38 finish 386
+run
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+TIME:1667 curTrack:36 currentJob:1281 36
+1667:    39 issue 81 36
+run
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+TIME:1712 curTrack:81 currentJob:1324 81
+1708:    49 add 87
+run
+1324 81
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1712 curTrack:81 currentJob:1324 81
+1712:    39 finish 388
+run
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1712 curTrack:81 currentJob:1324 81
+1712:    40 issue 88 81
+run
+1343 88
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1719 curTrack:88 currentJob:1343 88
+1719:    40 finish 376
+run
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1719 curTrack:88 currentJob:1343 88
+1719:    41 issue 56 88
+run
+1351 56
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1751 curTrack:56 currentJob:1351 56
+1751:    41 finish 400
+run
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1751 curTrack:56 currentJob:1351 56
+1751:    42 issue 106 56
+run
+1405 106
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1801 curTrack:106 currentJob:1405 106
+1801:    42 finish 396
+run
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1801 curTrack:106 currentJob:1405 106
+1801:    43 issue 29 106
+run
+1422 29
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1878 curTrack:29 currentJob:1422 29
+1878:    43 finish 456
+run
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1878 curTrack:29 currentJob:1422 29
+1878:    44 issue 44 29
+run
+1477 44
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1893 curTrack:44 currentJob:1477 44
+1893:    44 finish 416
+run
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1893 curTrack:44 currentJob:1477 44
+1893:    45 issue 122 44
+run
+1517 122
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1971 curTrack:122 currentJob:1517 122
+1971:    45 finish 454
+run
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:1971 curTrack:122 currentJob:1517 122
+1971:    46 issue 84 122
+run
+1550 84
+1602 56
+1659 50
+1708 87
+TIME:2009 curTrack:84 currentJob:1550 84
+2009:    46 finish 459
+run
+1602 56
+1659 50
+1708 87
+TIME:2009 curTrack:84 currentJob:1550 84
+2009:    47 issue 56 84
+run
+1602 56
+1659 50
+1708 87
+TIME:2037 curTrack:56 currentJob:1602 56
+2037:    47 finish 435
+run
+1659 50
+1708 87
+TIME:2037 curTrack:56 currentJob:1602 56
+2037:    48 issue 50 56
+run
+1659 50
+1708 87
+TIME:2043 curTrack:50 currentJob:1659 50
+2043:    48 finish 384
+run
+1708 87
+TIME:2043 curTrack:50 currentJob:1659 50
+2043:    49 issue 87 50
+run
+1708 87
+TIME:2080 curTrack:87 currentJob:1708 87
+2080:    49 finish 372
+run
+TIME:2080 curTrack:87 currentJob:1708 87
