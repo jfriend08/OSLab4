@@ -5,6 +5,7 @@ Usage: ./iosched –s<schedalgo> <inputfile>
 --	now all processes are correct for method i
 --	now all process and SUM are correct for method i
 --	now all process and SUM are correct for method i j s
+--	now all process and SUM are correct for method i j s c
 
 */
 
@@ -86,7 +87,6 @@ public:
 		}		
 		return shortest_idx;
 	}
-
 	int searchright(vector<Job>* tasks, deque<Job>& Run_dq){
 		int shortest=10000; int shortest_idx=-1;
 		for (int i=0; i<Run_dq.size(); i++){				
@@ -94,33 +94,64 @@ public:
 		}
 		return shortest_idx;
 	}
-
 	int select(vector<Job>* tasks, deque<Job>& Run_dq){
-		int shortest=10000; int shortest_idx;
-		int reftmost=0; int rightmost=0;
+		int shortest=10000; int shortest_idx; int reftmost=0; int rightmost=0;
 		if(!Run_dq.empty()){
-			if(direction ==0){
-				// cout<<"hi2"<<endl;
+			if(direction ==0){				
 				for (int i=0; i<Run_dq.size(); i++){				
 					if( abs(Run_dq[i].track- curTrack) < shortest ){shortest = abs(Run_dq[i].track- curTrack); shortest_idx = i;}				
 				}
 				if ((Run_dq[shortest_idx].track - curTrack) == 0 ){direction =0;}
 				else if ((Run_dq[shortest_idx].track - curTrack) < 0 ){direction = -1;}
 				else if ((Run_dq[shortest_idx].track - curTrack) > 0 ){direction = 1;}
-			}
-			
-			else if( direction == -1){
-				// cout<<"hi3"<<endl;
+			}			
+			else if( direction == -1){				
 				shortest_idx = searchleft(tasks, Run_dq);
 				if (shortest_idx != -1) return shortest_idx;
 				else if (shortest_idx == -1) {direction = 1; shortest_idx = searchright(tasks, Run_dq);}
 			}
-
 			else if( direction == 1){
-				// cout<<"hi4"<<endl;
 				shortest_idx = searchright(tasks, Run_dq);
 				if (shortest_idx != -1) return shortest_idx;
 				else if (shortest_idx == -1) {direction = -1; shortest_idx = searchleft(tasks, Run_dq);}	
+			}			
+			return shortest_idx;
+		}
+		return -1;
+	}	
+
+};
+class CSCAN : public Scheduler{
+public:
+	int searchright(vector<Job>* tasks, deque<Job>& Run_dq){
+		int shortest=10000; int shortest_idx=-1;
+		for (int i=0; i<Run_dq.size(); i++){				
+			if( Run_dq[i].track >= curTrack && abs(Run_dq[i].track- curTrack) < shortest ){shortest = abs(Run_dq[i].track- curTrack); shortest_idx = i;}				
+		}
+		return shortest_idx;
+	}
+	int Toleftmost(vector<Job>* tasks, deque<Job>& Run_dq){
+		int shortest=10000; int shortest_idx=-1;
+		for (int i=0; i<Run_dq.size(); i++){				
+			if( Run_dq[i].track < shortest ){shortest = Run_dq[i].track; shortest_idx = i;}				
+		}
+		return shortest_idx;
+	}
+	
+	int select(vector<Job>* tasks, deque<Job>& Run_dq){
+		int shortest=10000; int shortest_idx; int reftmost=0; int rightmost=0;
+		if(!Run_dq.empty()){
+			if(direction ==0){				
+				for (int i=0; i<Run_dq.size(); i++){				
+					if( abs(Run_dq[i].track- curTrack) < shortest ){shortest = abs(Run_dq[i].track- curTrack); shortest_idx = i;}				
+				}
+				if ((Run_dq[shortest_idx].track - curTrack) == 0 ){direction =0;}
+				else if ((Run_dq[shortest_idx].track - curTrack) > 0 ){direction = 1;}
+			}			
+			else if( direction == 1){
+				shortest_idx = searchright(tasks, Run_dq);
+				if (shortest_idx != -1) return shortest_idx;
+				else if (shortest_idx == -1) {shortest_idx = Toleftmost(tasks, Run_dq);}	
 			}			
 			return shortest_idx;
 		}
@@ -252,6 +283,7 @@ int main(int argc, char *argv[]){
 	if (sche=="i"){IO.scheduler = new FIFO;}
 	else if (sche=="j"){IO.scheduler = new SSTF;}
 	else if (sche=="s"){IO.scheduler = new SCAN;}
+	else if (sche=="c"){IO.scheduler = new CSCAN;}
 	
 	IO.tasks = &tasks_v;
 	IO.change();
