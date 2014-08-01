@@ -6,6 +6,7 @@ Usage: ./iosched –s<schedalgo> <inputfile>
 --	now all process and SUM are correct for method i
 --	now all process and SUM are correct for method i j s
 --	now all process and SUM are correct for method i j s c
+--	now all process and SUM are correct for method i j s c f, but logic is not so clear
 
 */
 
@@ -93,8 +94,9 @@ public:
 			if( Run_dq[i].track >= curTrack && abs(Run_dq[i].track- curTrack) < shortest ){shortest = abs(Run_dq[i].track- curTrack); shortest_idx = i;}				
 		}
 		return shortest_idx;
-	}
+	}	
 	int select(vector<Job>* tasks, deque<Job>& Run_dq){
+		if(sche=="f" && direction !=0){direction = 1;}
 		int shortest=10000; int shortest_idx; int reftmost=0; int rightmost=0;
 		if(!Run_dq.empty()){
 			if(direction ==0){				
@@ -137,7 +139,7 @@ public:
 		}
 		return shortest_idx;
 	}
-	
+
 	int select(vector<Job>* tasks, deque<Job>& Run_dq){
 		int shortest=10000; int shortest_idx; int reftmost=0; int rightmost=0;
 		if(!Run_dq.empty()){
@@ -157,6 +159,10 @@ public:
 		}
 		return -1;
 	}	
+};
+
+class FSCAN : public Scheduler{
+public:
 
 };
 
@@ -164,6 +170,7 @@ class IOsche{
 public:
 	vector < Job >* tasks;
 	deque<Job> Run_dq;
+	deque<Job> secondRun_dq;
 	deque<Job> Finish_dq;
 	Scheduler* scheduler;	
 	int issuedT;
@@ -176,15 +183,28 @@ public:
 		// for(int i=0; i<Run_dq.size(); i++){cout<<Run_dq[i].t<<" "<<Run_dq[i].track<<endl;}
 		// cout<<"TIME:"<<TIME<<" curTrack:"<<curTrack<<" currentJob:"<<currentJob.t<<" "<<currentJob.track<<endl;
 		// cout<<scheduler->select(tasks, Run_dq)<<endl;
-		cout<<"run_idx:"<<run_idx<<endl;
+		// cout<<"run_idx:"<<run_idx<<endl;
+		cout<<"sizeRun:"<<Run_dq.size()<<" sizeSecond:"<<secondRun_dq.size()<<endl;
+		cout<<"tasks->front().t:"<<tasks->front().t<<" TIME:"<<TIME<<endl;
 	}
 	void add(vector<Job>* tasks, deque<Job> &Run_dq){
-		if(Run_dq.empty())TIME=tasks->front().t;
+		if(sche!="f" && Run_dq.empty()) TIME=tasks->front().t;
+		// else if (sche=="f" && Run_dq.empty() && secondRun_dq.empty()) TIME=tasks->front().t;
 		if(o_flag==1)printf("%d: %5d add %d\n",tasks->front().t, tasks->front().idx, tasks->front().track); 
 		// if(o_flag==1)printf("%d: %5d add %d\n",tasks->front().t, addCount, tasks->front().track); 
 		Record record_tmp; record_tmp.arrive_t=tasks->front().t; Record_v.push_back(record_tmp);
-		Run_dq.push_back(tasks->front()); tasks->erase(tasks->begin()); addCount++;
+		Run_dq.push_back(tasks->front()); tasks->erase(tasks->begin()); addCount++;		
 		if(D_flag==1)print();
+	}
+	void addsecondQ(vector<Job>* tasks, deque<Job> &secondRun_dq){
+		secondRun_dq.push_back(tasks->front()); tasks->erase(tasks->begin()); addCount++;
+	}
+	void second2runq(deque<Job> &Run_dq, deque<Job> &secondRun_dq){
+		Run_dq.clear();
+		for(int i=0; i<secondRun_dq.size(); i++){
+			Run_dq.push_back(secondRun_dq[i]);
+		}
+		secondRun_dq.clear();
 	}
 	
 	void issue(vector<Job>* tasks, deque<Job> &Run_dq){
@@ -227,18 +247,40 @@ public:
 	}
 
 	void change(){
-		while (tasks->size()!=0 | Run_dq.size()!=0){			
-			while(tasks->size()!=0 && tasks->front().t<=TIME){			
-				add(tasks, Run_dq);
-			}		
-			if (addCount>1 ){
-				finish(tasks, Run_dq);			
-			}
-			
-			if(!Run_dq.empty()) issue(tasks, Run_dq);
-			else if (Run_dq.empty()&& !tasks->empty()){add(tasks, Run_dq);issue(tasks, Run_dq);}					
-		}
-		SUM();		
+		while (tasks->size()!=0 || Run_dq.size()!=0){			
+  			while(tasks->size()!=0 && tasks->front().t<=TIME){			  				
+  				if(sche != "f" || addCount == 0){
+  					add(tasks, Run_dq);
+  				}  				
+  				else if(sche=="f" && issueCount>0){
+  					add(tasks, secondRun_dq);
+  				}
+  				
+  			}		  			
+  			if ( addCount>1 ){
+  				finish(tasks, Run_dq);			
+  			}
+  			
+  			if(!Run_dq.empty()) issue(tasks, Run_dq);
+  			
+  			else if (Run_dq.empty() && !tasks->empty()){
+  				if (sche!="f"){add(tasks, Run_dq);issue(tasks, Run_dq);}
+  				else if (sche=="f"){
+  					if (!secondRun_dq.empty()){
+  						second2runq(Run_dq, secondRun_dq);issue(tasks, Run_dq);	
+  					}
+  					else{
+  						TIME=tasks->front().t;
+  						add(tasks, Run_dq);issue(tasks, Run_dq);
+  					}  					  					
+  				}
+  			}
+
+  			else if(sche=="f" && !secondRun_dq.empty()){
+  				second2runq(Run_dq, secondRun_dq);issue(tasks, Run_dq);	
+  			}  			
+  		}
+  		SUM();		
 	}
 	
 
@@ -284,6 +326,7 @@ int main(int argc, char *argv[]){
 	else if (sche=="j"){IO.scheduler = new SSTF;}
 	else if (sche=="s"){IO.scheduler = new SCAN;}
 	else if (sche=="c"){IO.scheduler = new CSCAN;}
+	else if (sche=="f"){IO.scheduler = new SCAN;}
 	
 	IO.tasks = &tasks_v;
 	IO.change();
